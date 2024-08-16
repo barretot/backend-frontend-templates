@@ -1,0 +1,3 @@
+HelloLambda:
+  handler: index.helloLambda
+  timeout: 900

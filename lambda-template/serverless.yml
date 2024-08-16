@@ -1,0 +1,77 @@
+service: ${sls:stage}-${file(./package.json):name}
+frameworkVersion: "3"
+configValidationMode: error
+deprecationNotificationMode: error
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: us-east-1
+  timeout: 30
+  versionFunctions: false
+  stage: ${opt:stage, 'dev'}
+
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - "stepfunctions:*"
+            - "logs:*"
+            - "s3:*"
+            - "rekognition:*"
+            - "bedrock:*"
+            - "dynamodb:*"
+            - "textract:*"
+            - "sqs:*"
+            - "events:*"
+            - "states:*"
+          Resource: "*"
+
+  stackTags:
+    department: x.xxxxxxxx
+    squad: x.xxxxxxxx
+    projectName: x.xxxxxxxx
+    project: hello lambda
+    stage: ${sls:stage}
+    env: ${opt:stage, 'dev'}
+    version: ${file(./package.json):version}
+  environment: ${file(ymls/environment.yml)}
+
+layers:
+  BkoLayer:
+    name: bkoLayer
+    package:
+      artifact: layers/bkoLayer.zip
+    compatibleRuntimes:
+      - nodejs20.x
+    compatibleArchitectures:
+      - x86_64
+
+plugins:
+  - serverless-step-functions
+  - serverless-prune-plugin
+
+functions: ${file(ymls/functions.yml)}
+
+resources: ${file(ymls/resources.yml)}
+
+custom: ${file(ymls/custom.yml)}
+
+package:
+  excludeDevDependencies: true
+  patterns:
+    - "!node_modules/serverless-**"
+    - "!coverage/**"
+    - "!test/**"
+    - "!.nyc_output/**"
+    - "!.env"
+    - "!.gitignore"
+    - "!package-lock.json"
+    - "!README.md"
+    - "!docs/**"
+    - "!.vscode/**"
+    - "!ymls/**"
+    - "!.editorconfig"
+    - "!.logs"
