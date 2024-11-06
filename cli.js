@@ -7,6 +7,7 @@ const inquirer = require('inquirer'); // Certifique-se de importar o inquirer co
 
 const program = new Command();
 const apiTemplateDir = path.resolve(__dirname, 'api-template');
+const apiTemplateTsDir = path.resolve(__dirname, 'api-template-ts');
 const lambdaTemplateDir = path.resolve(__dirname, 'lambda-template');
 
 program
@@ -37,8 +38,22 @@ program
       },
     ]);
 
+    let templateDir = lambdaTemplateDir; // Default para lambda
+
+    // Se for uma API, pergunta se deseja TypeScript
+    if (templateType === 'api') {
+      const { useTs } = await inquirer.prompt([
+        {
+          type: 'confirm',
+          name: 'useTs',
+          message: 'Você quer a versão com TypeScript?',
+          default: false,
+        },
+      ]);
+      templateDir = useTs ? apiTemplateTsDir : apiTemplateDir;
+    }
+
     const basePath = path.resolve(process.cwd(), projectName);
-    const templateDir = templateType === 'api' ? apiTemplateDir : lambdaTemplateDir;
 
     try {
       // Verifica se o diretório do projeto já existe
