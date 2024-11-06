@@ -1,6 +1,8 @@
-import { CreateUserUseCase } from '@/use-cases/user-use-case/register'
-import { UserRepositoryAdapter } from '@/infrastructure/adapters/user-repository-adapter'
 import { FastifyReply, FastifyRequest } from 'fastify'
+
+import { UserRepositoryAdapter } from '@/infrastructure/adapters/user-repository-adapter'
+import { CreateUserUseCase } from '@/use-cases/user-use-case/register'
+
 import { registerValidation } from '../../validations/user-validations/register'
 
 export class UserController {

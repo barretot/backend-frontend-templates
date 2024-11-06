@@ -1,8 +1,9 @@
 import fastify from 'fastify'
 
 import { env } from '@/config'
-import { userRoutes } from '../http/routes/user-routes'
+
 import { registerPlugins } from './fastify/plugins'
+import { userRoutes } from '../http/routes/user-routes'
 
 export const app = fastify()
 

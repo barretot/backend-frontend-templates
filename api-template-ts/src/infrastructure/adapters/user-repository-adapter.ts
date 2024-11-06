@@ -1,5 +1,5 @@
-import { UserRepository } from '../../domain/repositories/UserRepository'
 import { User } from '../../domain/entities/User'
+import { UserRepository } from '../../domain/repositories/UserRepository'
 import { InMemoryDatabase } from '../database/in-memory-database'
 
 export class UserRepositoryAdapter implements UserRepository {

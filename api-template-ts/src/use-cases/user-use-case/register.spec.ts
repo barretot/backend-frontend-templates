@@ -1,6 +1,8 @@
 import { expect, it, describe } from 'vitest'
-import { CreateUserUseCase } from './register'
+
 import { UserRepositoryAdapter } from '@/infrastructure/adapters/user-repository-adapter'
+
+import { CreateUserUseCase } from './register'
 
 describe('Register Use Case', () => {
   it('should register user', async () => {

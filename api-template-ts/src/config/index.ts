@@ -1,6 +1,7 @@
 import 'dotenv/config'
 
 import { z } from 'zod'
+
 import { envs } from './env'
 
 const envSchema = z.object(envs)

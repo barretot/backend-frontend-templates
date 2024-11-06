@@ -5,7 +5,7 @@
       "type": "node",
       "request": "launch",
       "name": "Start API",
-      "runtimeExecutable": "node",
+      "runtimeExecutable": "tsx",
       "runtimeArgs": ["--inspect", "./node_modules/.bin/tsx", "src/adapters/server/server.ts"],
       "sourceMaps": true,
       "envFile": "${workspaceFolder}/.env",

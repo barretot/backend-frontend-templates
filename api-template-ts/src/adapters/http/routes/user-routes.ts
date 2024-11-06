@@ -1,4 +1,5 @@
 import { FastifyInstance, RouteOptions } from 'fastify'
+
 import { UserController } from '../controllers/user-controller/register'
 import { registerSchema } from '../schemas/user-schemas/register'
 
