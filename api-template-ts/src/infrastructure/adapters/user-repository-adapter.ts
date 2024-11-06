@@ -14,7 +14,9 @@ export class UserRepositoryAdapter implements UserRepository {
     return user || null
   }
 
-  async create(user: User): Promise<User> {
+  async create({ name, email, password }: User): Promise<User> {
+    const user = new User({ name, email, password })
+
     return this.db.create(user)
   }
 }

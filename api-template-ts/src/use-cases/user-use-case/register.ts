@@ -18,9 +18,7 @@ export class CreateUserUseCase {
     email,
     password,
   }: RegisterUseCaseRequest): Promise<RegisterUseCaseResponse> {
-    const userEntity = User.CreateEntity({ name, email, password })
-
-    const user = await this.userRepository.create(userEntity)
+    const user = await this.userRepository.create({ name, email, password })
 
     return { user }
   }

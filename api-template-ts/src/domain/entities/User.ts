@@ -12,8 +12,4 @@ export class User {
     }
     Object.assign(this, props)
   }
-
-  static CreateEntity(props: User) {
-    return new User(props)
-  }
 }

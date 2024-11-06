@@ -7,9 +7,9 @@ export const registerSchema = {
       description: 'User created',
       type: 'object',
       properties: {
+        id: { type: 'string' },
         name: { type: 'string' },
         email: { type: 'string' },
-        password: { type: 'string' },
       },
     },
   },

@@ -1,6 +1,6 @@
-FROM node:20.9.0
+FROM node:22.11
 
-WORKDIR /build
+WORKDIR /app
 
 COPY package*.json /app/
 
@@ -8,4 +8,5 @@ RUN npm ci
 
 COPY . /app
 
-CMD ["npm", "start"]
+# Executa o build e depois inicia o servidor
+CMD ["sh", "-c", "npm run build && npm start"]

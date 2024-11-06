@@ -4,13 +4,17 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "tsx watch src/adapters/server/server.ts",
-    "start": "node build/server.js",
+    "start": "node build/adapters/server/server.js",
     "build": "tsup src --out-dir build",
     "lint": "eslint src --ext .ts --fix",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui"
+  },
+  "engines": {
+    "node": ">=22",
+    "npm": ">=10"
   },
   "keywords": [],
   "author": "",

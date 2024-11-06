@@ -14,7 +14,7 @@ export class UserController {
   async register(request: FastifyRequest, reply: FastifyReply) {
     const { name, email, password } = registerValidation.parse(request.body)
 
-    const user = await this.createUserUseCase.execute({
+    const { user } = await this.createUserUseCase.execute({
       name,
       email,
       password,
