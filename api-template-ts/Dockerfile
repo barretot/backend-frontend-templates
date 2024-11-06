@@ -2,11 +2,10 @@ FROM node:22.11
 
 WORKDIR /app
 
-COPY package*.json /app/
+COPY package.json pnpm-lock.yaml* ./
 
-RUN npm ci
+RUN npm install -g pnpm && pnpm install
 
 COPY . /app
 
-# Executa o build e depois inicia o servidor
-CMD ["sh", "-c", "npm run build && npm start"]
+CMD ["sh", "-c", "pnpm run build && pnpm start"]
