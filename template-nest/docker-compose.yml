@@ -1,13 +1,13 @@
 services:
   postgres:
-    container_name: sql-container
+    container_name: db-container
     image: postgres
     ports:
       - 5432:5432
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=trim-url-db
+      - POSTGRES_DB=yourDatabase
       - PGDATA=/var/lib/postgresql/data
     volumes:
       - ./data/postgres:/var/lib/postgresql/data

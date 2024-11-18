@@ -1,16 +1,16 @@
 import { Injectable } from '@nestjs/common'
 
-import { User } from '@/domain/entities/User'
-import { UserRepository } from '@/domain/repositories/UserRepository'
+import { User } from '@/domain/entities/user/User'
+import { UserRepository } from '@/domain/repositories/user/UserRepository'
 
-import { InMemoryDatabaseService } from '../../in-memory-database.service'
+import { InMemoryDatabaseService } from './in-memory-database.service'
 
 @Injectable()
 export class UserRepositoryAdapter implements UserRepository {
   constructor(private db: InMemoryDatabaseService<User>) {}
 
-  async findById(id: string): Promise<User | null> {
-    const user = this.db.find((user) => user.id === id)
+  async findByEmail(email: string): Promise<User | null> {
+    const user = this.db.find((user) => user.email === email)
     return user || null
   }
 

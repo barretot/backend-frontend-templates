@@ -9,6 +9,7 @@ const program = new Command();
 const apiTemplateDir = path.resolve(__dirname, 'api-template');
 const apiTemplateTsDir = path.resolve(__dirname, 'api-template-ts');
 const lambdaTemplateDir = path.resolve(__dirname, 'lambda-template');
+const templateNest = path.resolve(__dirname, 'template-nest');
 
 program
   .version('1.0.0')
@@ -38,9 +39,8 @@ program
       },
     ]);
 
-    let templateDir = lambdaTemplateDir; // Default para lambda
+    let templateDir = lambdaTemplateDir;
 
-    // Se for uma API, pergunta se deseja TypeScript
     if (templateType === 'api') {
       const { useTs } = await inquirer.prompt([
         {
@@ -50,22 +50,33 @@ program
           default: false,
         },
       ]);
-      templateDir = useTs ? apiTemplateTsDir : apiTemplateDir;
+
+      if (useTs) {
+        const { useNest } = await inquirer.prompt([
+          {
+            type: 'confirm',
+            name: 'useNest',
+            message: 'Você quer usar NestJS?',
+            default: false,
+          },
+        ]);
+
+        templateDir = useNest ? templateNest : apiTemplateTsDir;
+      } else {
+        templateDir = apiTemplateDir;
+      }
     }
 
     const basePath = path.resolve(process.cwd(), projectName);
 
     try {
-      // Verifica se o diretório do projeto já existe
       if (fs.existsSync(basePath)) {
         console.error(`O diretório ${projectName} já existe.`);
         process.exit(1);
       }
 
-      // Copia o template para o novo diretório
       await fs.copy(templateDir, basePath);
 
-      // Atualiza o package.json com o nome do projeto
       const packageJsonPath = path.join(basePath, 'package.json');
       if (fs.existsSync(packageJsonPath)) {
         const packageJson = await fs.readJson(packageJsonPath);

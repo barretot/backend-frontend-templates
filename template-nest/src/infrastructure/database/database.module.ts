@@ -1,18 +1,18 @@
 import { Module } from '@nestjs/common'
 
-import { UserRepository } from '@/domain/repositories/UserRepository'
+import { UserRepository } from '@/domain/repositories/user/UserRepository'
 
-import { InMemoryDatabaseService } from './inMemory/in-memory-database.service'
-import { UserRepositoryAdapter } from './inMemory/repositories/adapters/user-repository-adapter'
+import { InMemoryDatabaseService } from './in-memory/in-memory-database.service'
+import { InMemoryUserRepository } from './in-memory/repositories/user/user-repository'
 
 @Module({
   providers: [
     InMemoryDatabaseService,
     {
       provide: UserRepository,
-      useClass: UserRepositoryAdapter,
+      useClass: InMemoryUserRepository,
     },
   ],
-  exports: [UserRepository, InMemoryDatabaseService],
+  exports: [InMemoryDatabaseService, UserRepository],
 })
 export class DatabaseModule {}
