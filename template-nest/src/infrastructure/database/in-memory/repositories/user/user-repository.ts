@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
 
-import { User } from '@/domain/entities/user/User'
-import { UserRepository } from '@/domain/repositories/user/UserRepository'
+import { User } from '@/core/domain/entities/user/User'
+import { UserRepository } from '@/core/domain/repositories/user/UserRepository'
 
 import { InMemoryDatabaseService } from '../../in-memory-database.service'
 

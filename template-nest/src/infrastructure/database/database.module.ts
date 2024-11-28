@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common'
 
-import { UserRepository } from '@/domain/repositories/user/UserRepository'
+import { UserRepository } from '@/core/domain/repositories/user/UserRepository'
 
 import { InMemoryDatabaseService } from './in-memory/in-memory-database.service'
 import { InMemoryUserRepository } from './in-memory/repositories/user/user-repository'

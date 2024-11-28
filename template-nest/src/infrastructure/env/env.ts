@@ -5,6 +5,7 @@ import {
   Max,
   IsOptional,
   IsNotEmpty,
+  IsIn,
 } from 'class-validator'
 
 export class Env {
@@ -15,8 +16,9 @@ export class Env {
   @IsInt()
   @Min(2)
   @Max(2)
+  @IsIn([0, 1, 2])
   @IsNotEmpty()
-  readonly ARGON2_TYPE!: number
+  readonly ARGON2_TYPE!: 0 | 1 | 2
 
   @IsInt()
   @Min(1)

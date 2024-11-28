@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 
+import { EnvModule } from './env/env.module'
 import { validateEnv } from './env/validate-envs'
 import { HttpModule } from '../infrastructure/http/http.module'
 
@@ -11,6 +12,7 @@ import { HttpModule } from '../infrastructure/http/http.module'
       validate: validateEnv,
     }),
     HttpModule,
+    EnvModule,
   ],
 })
 export class AppModule {}
