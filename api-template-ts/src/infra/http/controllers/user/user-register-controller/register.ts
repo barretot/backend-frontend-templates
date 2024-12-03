@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
 
-import { registerDto } from '@/infrastructure/http/dto/user/register-dto'
+import { registerDto } from '@/infra/http/dto/user/register-dto'
 
 import { makeRegisterUseCase } from './factory'
 

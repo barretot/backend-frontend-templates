@@ -1,7 +1,7 @@
 import argon2 from 'argon2'
 
 import { CryptographyAdapter } from '@/core/adapters/cryptography/cryptography-adapter'
-import { Config } from '@/infrastructure/env/get-env'
+import { Config } from '@/infra/env/get-env'
 
 export class Argon2Hasher implements CryptographyAdapter {
   constructor(private config: Config) {}

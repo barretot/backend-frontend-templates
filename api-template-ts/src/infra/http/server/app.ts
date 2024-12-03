@@ -3,7 +3,7 @@ import fastify from 'fastify'
 import { userRoutes } from '../routes/user-routes.js'
 import { registerPlugins } from './fastify/plugins/index.js'
 
-export const app = fastify()
+export const app = fastify({ logger: true })
 
 registerPlugins(app)
 

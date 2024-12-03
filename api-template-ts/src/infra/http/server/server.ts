@@ -1,4 +1,6 @@
-import { Config } from '@/infrastructure/env/get-env'
+import 'dotenv/config'
+
+import { Config } from '@/infra/env/get-env'
 
 import { app } from './app'
 

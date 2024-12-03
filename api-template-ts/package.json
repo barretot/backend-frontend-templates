@@ -4,9 +4,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start:dev": "tsx watch src/infrastructure/http/server/server.ts",
+    "start:dev": "tsx watch src/infra/http/server/server.ts",
     "start": "node build/adapters/server/server.js",
-    "build": "tsup src --out-dir build",
+    "build": "tsup src --out-dir dist",
     "lint": "eslint src --fix",
     "test": "vitest run",
     "test:watch": "vitest",
