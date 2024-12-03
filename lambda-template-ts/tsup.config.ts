@@ -5,9 +5,8 @@ export default defineConfig({
   outDir: 'build',
   format: ['esm'],
   target: 'node22',
-  sourcemap: true, // Sem sourcemaps
-  clean: true, // Limpa o diretório de saída antes do build
-  splitting: false, // Sem chunks
-  minify: true, // Ativa minificação para produção, código em uma única linha
-  bundle: true, // Gera um único arquivo de saída
+  sourcemap: true, 
+  clean: true, 
+  splitting: false, 
+  bundle: true, 
 })

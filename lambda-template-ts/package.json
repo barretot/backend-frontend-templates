@@ -4,7 +4,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "rimraf dist && tsup src --out-dir dist",
+    "build:local": "rimraf dist && tsup src --out-dir dist",
+    "build:prod": "rimraf dist && tsup src --out-dir dist --minify --no-sourcemap",
     "lint": "eslint src --fix",
     "test": "vitest run",
     "test:watch": "vitest",
