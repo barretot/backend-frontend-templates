@@ -1,7 +1,8 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
 
+import { registerDto } from '@/infrastructure/http/dto/user/register-dto'
+
 import { makeRegisterUseCase } from './factory'
-import { registerValidation } from '../../validations/user-validations/register'
 
 export class UserController {
   private registerUseCase
@@ -11,7 +12,7 @@ export class UserController {
   }
 
   async register(request: FastifyRequest, reply: FastifyReply) {
-    const { name, email, password } = registerValidation.parse(request.body)
+    const { name, email, password } = registerDto.parse(request.body)
 
     const { value: user } = await this.registerUseCase.execute({
       name,

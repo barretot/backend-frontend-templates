@@ -1,7 +1,7 @@
 import fastify from 'fastify'
 
-import { userRoutes } from '../routes/user-routes'
-import { registerPlugins } from './fastify/plugins/index'
+import { userRoutes } from '../routes/user-routes.js'
+import { registerPlugins } from './fastify/plugins/index.js'
 
 export const app = fastify()
 

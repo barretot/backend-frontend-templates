@@ -1,7 +1,14 @@
-import { registerBodyJsonSchema } from '../../validations/user-validations/register'
+import { z } from 'zod'
+import zodToJsonSchema from 'zod-to-json-schema'
 
 export const registerSchema = {
-  body: registerBodyJsonSchema,
+  body: zodToJsonSchema(
+    z.object({
+      name: z.string(),
+      email: z.string().email(),
+      password: z.string().min(6),
+    }),
+  ),
   response: {
     201: {
       description: 'User created',

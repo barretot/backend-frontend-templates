@@ -1,6 +1,6 @@
 import { FastifyInstance, RouteOptions } from 'fastify'
 
-import { UserController } from '../controllers/user-controller/register'
+import { UserController } from '../controllers/user/user-register-controller/register'
 import { registerSchema } from '../schemas/user-schemas/register'
 
 const userController = new UserController()
