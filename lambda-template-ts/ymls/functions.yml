@@ -1,0 +1,4 @@
+RegisterUser:
+  handler: dist/infrastructure/lambdas/handlers/register-user.handler
+  name: ${self:service}-${self:provider.stage}-registerUser
+  timeout: 900

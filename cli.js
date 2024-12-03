@@ -3,12 +3,13 @@
 const { Command } = require('commander');
 const fs = require('fs-extra');
 const path = require('path');
-const inquirer = require('inquirer'); // Certifique-se de importar o inquirer corretamente
+const inquirer = require('inquirer');
 
 const program = new Command();
-const apiTemplateDir = path.resolve(__dirname, 'api-template');
+const apiTemplateDir = path.resolve(__dirname, 'api-template-js');
 const apiTemplateTsDir = path.resolve(__dirname, 'api-template-ts');
 const lambdaTemplateDir = path.resolve(__dirname, 'lambda-template');
+const lambdaTemplateTsDir = path.resolve(__dirname, 'lambda-template-ts');
 const templateNest = path.resolve(__dirname, 'template-nest');
 
 program
@@ -39,9 +40,20 @@ program
       },
     ]);
 
-    let templateDir = lambdaTemplateDir;
+    let templateDir;
 
-    if (templateType === 'api') {
+    if (templateType === 'lambda') {
+      const { useTs } = await inquirer.prompt([
+        {
+          type: 'confirm',
+          name: 'useTs',
+          message: 'Você quer a versão com TypeScript?',
+          default: false,
+        },
+      ]);
+
+      templateDir = useTs ? lambdaTemplateTsDir : lambdaTemplateDir;
+    } else if (templateType === 'api') {
       const { useTs } = await inquirer.prompt([
         {
           type: 'confirm',

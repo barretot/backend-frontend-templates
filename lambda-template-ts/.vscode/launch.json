@@ -1,0 +1,30 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug RegisterUser Function",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "--inspect",
+        "-r",
+        "tsconfig-paths/register",
+        "./node_modules/.bin/tsx",
+        "./node_modules/.bin/sls",
+        "invoke",
+        "local",
+        "-f",
+        "RegisterUser",
+        "--path",
+        "${workspaceFolder}/.vscode/payloads/register-user-payload.json"
+      ],
+      "console": "integratedTerminal",
+      "sourceMaps": true,
+      "outFiles": [
+        "${workspaceFolder}/dist/**/*.js"
+      ],
+      "skipFiles": ["<node_internals>/**"]
+    }
+  ]
+}
