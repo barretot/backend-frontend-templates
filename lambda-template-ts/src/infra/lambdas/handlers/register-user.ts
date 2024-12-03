@@ -1,5 +1,5 @@
 import { LambdaEvent } from '@/@common/types/lambda-event.type'
-import { registerDto } from '@/infrastructure/lambdas/dto/user/register-dto'
+import { registerDto } from '@/infra/lambdas/dto/user/register-dto'
 import { UserAlreadyExistsException } from '@/use-cases/user/errors/user-already-exists-exception'
 
 import { makeRegisterUseCase } from './factories/register-factory'

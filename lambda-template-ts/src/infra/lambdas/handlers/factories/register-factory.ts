@@ -1,5 +1,5 @@
-import { Argon2Hasher } from '@/infrastructure/cryptography/argon2/argon2-crypto'
-import { Config } from '@/infrastructure/env/get-env'
+import { Argon2Hasher } from '@/infra/cryptography/argon2/argon2-crypto'
+import { Config } from '@/infra/env/get-env'
 import { CreateUserUseCase } from '@/use-cases/user/register'
 import { InMemoryUserRepository } from 'test/mocks/repositories/in-memory-user-repository'
 

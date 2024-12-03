@@ -3,7 +3,7 @@ import { ConfigModule } from '@nestjs/config'
 
 import { EnvModule } from './env/env.module'
 import { validateEnv } from './env/validate-envs'
-import { HttpModule } from '../infrastructure/http/http.module'
+import { HttpModule } from './http/http.module'
 
 @Module({
   imports: [

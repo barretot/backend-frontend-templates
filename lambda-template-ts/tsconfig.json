@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "lib": ["es2023"],
-    "module": "ESNext",
+    "module": "CommonJS",
     "target": "ESNext",
     "declaration": true,
     "removeComments": true,
