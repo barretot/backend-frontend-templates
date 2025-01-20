@@ -8,7 +8,6 @@ export default defineConfig({
     root: './',
     include: ['test/**/*.test.ts', 'test/**/*.spec.ts'],
     exclude: ['dist', '**/dist/**', '**/vitest.config.*'],
-    
   },
   plugins: [tsconfigPaths(), swc.vite({ module: { type: 'es6' } })],
 })

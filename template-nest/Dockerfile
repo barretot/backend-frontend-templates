@@ -2,10 +2,8 @@ FROM node:22.11
 
 WORKDIR /app
 
-COPY package.json pnpm-lock.yaml* ./
-
-RUN npm install -g pnpm && pnpm install
+COPY package.json package-lock.json* ./
 
 COPY . /app
 
-CMD ["sh", "-c", "pnpm run build && pnpm start:dist"]
+CMD ["sh", "-c", "npm run build && npm start:prod"]

@@ -3,6 +3,36 @@ configValidationMode: error
 deprecationNotificationMode: error
 useDotenv: true
 
+build:
+   esbuild:
+    bundle: true
+    minify: true
+    sourcemap: false
+    external:
+      - "@aws-sdk/*"
+    exclude:
+      - "node_modules/**"
+
+plugins:
+  - serverless-step-functions
+  - serverless-prune-plugin
+
+package:
+  patterns:
+    - "dist/**"           # Inclui o código transpilado
+    - "!node_modules/**"  # Exclui dependências locais
+    - "!layers/**"        # Exclui o diretório de Layers
+    - "!.git/**"          # Exclui arquivos de controle de versão
+    - "!.serverless/**"   # Exclui diretórios de build antigos
+    - "!src/**"           # Exclui código fonte original
+    - "!static/**"        # Exclui a pasta static
+    - "!ymls/**"          # Exclui a pasta ymls
+    - "!package.json"
+    - "!package-lock.json"
+    - "!README.md"
+    - "!.env"             # Exclui arquivos de ambiente
+    - "!.gitignore"       # Exclui o .gitignore
+
 provider:
   name: aws
   runtime: nodejs20.x
