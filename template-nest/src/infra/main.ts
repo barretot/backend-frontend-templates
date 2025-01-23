@@ -23,7 +23,7 @@ async function bootstrap() {
     }),
   );
 
-  app.use(helmet);
+  app.use(helmet());
 
   app.enableCors({
     origin: '*',
