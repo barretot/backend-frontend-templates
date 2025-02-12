@@ -10,7 +10,6 @@
         "--inspect",
         "-r",
         "tsconfig-paths/register",
-        "./node_modules/.bin/tsx",
         "./node_modules/.bin/sls",
         "invoke",
         "local",

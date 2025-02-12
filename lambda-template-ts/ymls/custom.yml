@@ -7,3 +7,13 @@ ACCOUNT_ID:
   dev: 999999999999
   hml: 999999999999
   prd: 999999999999
+
+build:
+   esbuild:
+    bundle: true
+    minify: true
+    sourcemap: true
+    external:
+      - "@aws-sdk/*"
+    exclude:
+      - "node_modules/**"

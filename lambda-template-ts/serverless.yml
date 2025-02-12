@@ -3,20 +3,6 @@ configValidationMode: error
 deprecationNotificationMode: error
 useDotenv: true
 
-build:
-   esbuild:
-    bundle: true
-    minify: true
-    sourcemap: false
-    external:
-      - "@aws-sdk/*"
-    exclude:
-      - "node_modules/**"
-
-plugins:
-  - serverless-step-functions
-  - serverless-prune-plugin
-
 package:
   patterns:
     - "dist/**"           # Inclui o código transpilado
@@ -78,27 +64,8 @@ layers:
     compatibleArchitectures:
       - x86_64
 
-plugins:
-
 functions: ${file(ymls/functions.yml)}
 
 resources: ${file(ymls/resources.yml)}
 
 custom: ${file(ymls/custom.yml)}
-
-package:
-  excludeDevDependencies: true
-  patterns:
-    - "!node_modules/serverless-**"
-    - "!coverage/**"
-    - "!test/**"
-    - "!.nyc_output/**"
-    - "!.env"
-    - "!.gitignore"
-    - "!package-lock.json"
-    - "!README.md"
-    - "!docs/**"
-    - "!.vscode/**"
-    - "!ymls/**"
-    - "!.editorconfig"
-    - "!.logs"
