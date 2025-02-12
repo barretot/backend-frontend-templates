@@ -1,8 +1,8 @@
-import { LambdaEvent } from '@/@common/types/lambda-event.type'
-import { registerDto } from '@/infra/lambdas/dto/user/register-dto'
-import { UserAlreadyExistsException } from '@/use-cases/user/errors/user-already-exists-exception'
+import { LambdaEvent } from '@/shared/core/types/lambda-event.type'
 
+import { registerDto } from './dto/user/register-dto'
 import { makeRegisterUseCase } from './factories/register-factory'
+import { UserAlreadyExistsException } from '../core/use-cases/errors/user-already-exists-exception'
 
 export async function handler(payload: LambdaEvent) {
   const parsePayload = JSON.parse(payload.body)

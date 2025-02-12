@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "moduleResolution": "node",
     "module": "ESNext",
     "target": "ESNext",
     "declaration": true,
@@ -18,14 +19,16 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "esModuleInterop": true,
-    "baseUrl": "./",
+    "baseUrl": ".",
+    "rootDir": ".",
     "paths": {
       "@/*": [
         "./src/*"
       ],
     },
     "types": [
-      "vitest/globals"
+      "vitest/globals",
+      "node"
     ]
   },
   "include": ["src/**/*.ts", "test/**/*.ts"],

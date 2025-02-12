@@ -1,4 +1,4 @@
-import { Either, right, left } from '@/core/domain/either'
+import { Either, right, left } from '@/user/core/domain/either'
 
 function doSomeThing(shouldSuccess: boolean): Either<string, number> {
   if (shouldSuccess) {

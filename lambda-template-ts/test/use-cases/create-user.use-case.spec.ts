@@ -1,7 +1,8 @@
-import { UserAlreadyExistsException } from '@/use-cases/user/errors/user-already-exists-exception'
-import { CreateUserUseCase } from '@/use-cases/user/register'
+import { UserAlreadyExistsException } from '@/user/core/use-cases/errors/user-already-exists-exception'
+
 
 import { UserBuilder } from './builders/user-builder'
+import { CreateUserUseCase } from '@/user/core/use-cases/register'
 
 describe('Create user Use Case', () => {
   it('should return success when creating a user', async () => {

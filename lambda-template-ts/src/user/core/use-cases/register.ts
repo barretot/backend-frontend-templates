@@ -1,9 +1,9 @@
-import { CryptographyAdapter } from '@/core/adapters/cryptography/cryptography-adapter'
-import { Either, left, right } from '@/core/domain/either'
-import { User } from '@/core/domain/entities/User'
-import { InMemoryUserRepository } from 'test/mocks/repositories/in-memory-user-repository'
+import { InMemoryUserRepository } from '@/user/persitence/in-memory-user-repository'
 
+import { CryptographyAdapter } from '../adapters/cryptography/cryptography-adapter'
+import { Either, left, right } from '../domain/either'
 import { UserAlreadyExistsException } from './errors/user-already-exists-exception'
+import { User } from '../domain/entities/User'
 
 interface CreateUserUseCaseRequest {
   name: string
