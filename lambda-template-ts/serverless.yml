@@ -5,19 +5,8 @@ useDotenv: true
 
 package:
   patterns:
-    - "dist/**"           # Inclui o código transpilado
-    - "!node_modules/**"  # Exclui dependências locais
-    - "!layers/**"        # Exclui o diretório de Layers
-    - "!.git/**"          # Exclui arquivos de controle de versão
-    - "!.serverless/**"   # Exclui diretórios de build antigos
-    - "!src/**"           # Exclui código fonte original
-    - "!static/**"        # Exclui a pasta static
-    - "!ymls/**"          # Exclui a pasta ymls
-    - "!package.json"
-    - "!package-lock.json"
-    - "!README.md"
-    - "!.env"             # Exclui arquivos de ambiente
-    - "!.gitignore"       # Exclui o .gitignore
+    - "!./**"
+    - "dist/index.js"
 
 provider:
   name: aws
@@ -53,16 +42,6 @@ provider:
     env: ${opt:stage, 'dev'}
     version: ${file(./package.json):version}
   environment: ${file(ymls/environment.yml)}
-
-layers:
-  BkoLayer:
-    name: bkoLayer
-    package:
-      artifact: layers/bkoLayer.zip
-    compatibleRuntimes:
-      - nodejs20.x
-    compatibleArchitectures:
-      - x86_64
 
 functions: ${file(ymls/functions.yml)}
 

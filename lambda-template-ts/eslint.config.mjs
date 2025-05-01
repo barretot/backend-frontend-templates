@@ -6,8 +6,11 @@ import prettierPlugin from "eslint-plugin-prettier";
 
 export default [
   {
-    files: ["**/*.{js,mjs,cjs,ts}"],
     ignores: ["node_modules/**", "dist/**", "eslint.config.mjs"],
+  },
+  {
+    files: ["**/*.{js,mjs,cjs,ts}"],
+    
     languageOptions: {
       parser: typescriptParser,
       parserOptions: {

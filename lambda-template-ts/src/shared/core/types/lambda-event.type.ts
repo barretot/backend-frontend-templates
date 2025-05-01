@@ -1,3 +1,3 @@
 export type LambdaEvent = {
-  body: string
-}
+  body: string;
+};

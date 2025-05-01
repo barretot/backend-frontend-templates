@@ -1,20 +1,20 @@
-import { User } from '@/user/core/domain/entities/User'
-import { UserRepository } from '@/user/core/domain/repositories/UserRepository'
+import { User } from '../core/domain/entities/User';
+import { UserRepository } from '../core/domain/repositories/UserRepository';
 
 export class InMemoryUserRepository implements UserRepository {
-  public items: User[] = []
+  public items: User[] = [];
 
   constructor() {}
   async findByEmail(email: string) {
-    const user = this.items.find((item) => item.email === email)
+    const user = this.items.find((item) => item.email === email);
 
     if (!user) {
-      return null
+      return null;
     }
 
-    return user
+    return user;
   }
   async create(user: User) {
-    this.items.push(user)
+    this.items.push(user);
   }
 }

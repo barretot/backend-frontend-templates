@@ -1,12 +1,15 @@
-import { BcryptHasher } from '@/shared/lib/cryptography/bcyrypt/bcrypt-crypto'
-import { Config } from '@/shared/lib/env/get-env'
-import { CreateUserUseCase } from '@/user/core/use-cases/register'
-import { InMemoryUserRepository } from 'test/mocks/repositories/in-memory-user-repository'
+import { BcryptHasher } from '../../../shared/lib/cryptography/bcyrypt/bcrypt-crypto.js';
+import { Config } from '../../../shared/lib/env/get-env.js';
+import { CreateUserUseCase } from '../../core/use-cases/register.js';
+import { InMemoryUserRepository } from '../../persitence/in-memory-user-repository.js';
 
 export function makeRegisterUseCase() {
-  const usersRepository = new InMemoryUserRepository()
-  const cryptography = new BcryptHasher(new Config())
-  const createUserUseCase = new CreateUserUseCase(usersRepository, cryptography)
+  const usersRepository = new InMemoryUserRepository();
+  const cryptography = new BcryptHasher(new Config());
+  const createUserUseCase = new CreateUserUseCase(
+    usersRepository,
+    cryptography,
+  );
 
-  return createUserUseCase
+  return createUserUseCase;
 }

@@ -1,31 +1,31 @@
-import { z } from 'zod'
+import { z } from 'zod';
 
-import { envs } from './env'
+import { envs } from './env';
 
-const envSchema = z.object(envs)
+const envSchema = z.object(envs);
 
 export class Config {
-  private config: z.infer<typeof envSchema>
+  private config: z.infer<typeof envSchema>;
 
   constructor() {
-    const parsed = envSchema.safeParse(process.env)
+    const parsed = envSchema.safeParse(process.env);
 
     if (!parsed.success) {
       throw new Error(
         `Invalid environment variables: ${JSON.stringify(parsed.error.format())}`,
-      )
+      );
     }
 
-    this.config = parsed.data
+    this.config = parsed.data;
   }
 
   get<Key extends keyof typeof envs>(env: Key): z.infer<typeof envSchema>[Key] {
-    const value = this.config[env]
+    const value = this.config[env];
 
     if (value === undefined) {
-      throw new Error(`Environment variable ${String(env)} is not defined.`)
+      throw new Error(`Environment variable ${String(env)} is not defined.`);
     }
 
-    return value
+    return value;
   }
 }
