@@ -11,6 +11,8 @@ const apiTemplateTsDir = path.resolve(__dirname, 'api-template-ts');
 const lambdaTemplateDir = path.resolve(__dirname, 'lambda-template');
 const lambdaTemplateTsDir = path.resolve(__dirname, 'lambda-template-ts');
 const templateNest = path.resolve(__dirname, 'template-nest');
+const reactTemplateDir = path.resolve(__dirname, 'react-template');
+
 
 program
   .version('1.0.0')
@@ -30,6 +32,7 @@ program
         choices: [
           { name: 'API', value: 'api' },
           { name: 'Lambda', value: 'lambda' },
+          { name: 'React Frontend', value: 'react' }, 
         ],
       },
       {
@@ -77,6 +80,8 @@ program
       } else {
         templateDir = apiTemplateDir;
       }
+    } else if (templateType === 'react') {
+      templateDir = reactTemplateDir; 
     }
 
     const basePath = path.resolve(process.cwd(), projectName);
